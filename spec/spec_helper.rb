@@ -121,6 +121,10 @@ RSpec.configure do |config|
       'query'
     ]
 
+  config.before do |example|
+    clear_all_indexes(client) if example.metadata[:clear_indexes]
+  end
+
   # Helpers
   config.include IndexesHelpers
   config.include ExceptionsHelpers

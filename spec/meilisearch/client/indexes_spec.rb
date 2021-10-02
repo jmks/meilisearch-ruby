@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe 'MeiliSearch::Client - Indexes' do
+RSpec.describe 'MeiliSearch::Client - Indexes', :clear_indexes do
   let(:client) { MeiliSearch::Client.new($URL, $MASTER_KEY) }
 
   describe '#create_index' do
@@ -92,9 +92,6 @@ RSpec.describe 'MeiliSearch::Client - Indexes' do
 
   describe '#indexes' do
     it 'gets list of indexes' do
-      # TODO: automate this
-      clear_all_indexes(client)
-
       client.create_index('list_indexes_first')
       client.create_index('list_indexes_second')
       client.create_index('list_indexes_third')
