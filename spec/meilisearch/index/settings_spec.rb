@@ -202,19 +202,4 @@ RSpec.describe 'MeiliSearch::Index - Settings' do
     let(:update_value) { ['title', 'description'] }
     let(:matcher) { method(:match_array) }
   end
-
-  context 'Aliases' do
-    let!(:index) { client.create_index(random_uid) }
-
-    it 'works with method aliases' do
-      expect(index.method(:settings) == index.method(:get_settings)).to be_truthy
-      expect(index.method(:ranking_rules) == index.method(:get_ranking_rules)).to be_truthy
-      expect(index.method(:distinct_attribute) == index.method(:get_distinct_attribute)).to be_truthy
-      expect(index.method(:searchable_attributes) == index.method(:get_searchable_attributes)).to be_truthy
-      expect(index.method(:displayed_attributes) == index.method(:get_displayed_attributes)).to be_truthy
-      expect(index.method(:synonyms) == index.method(:get_synonyms)).to be_truthy
-      expect(index.method(:stop_words) == index.method(:get_stop_words)).to be_truthy
-      expect(index.method(:filterable_attributes) == index.method(:get_filterable_attributes)).to be_truthy
-    end
-  end
 end
